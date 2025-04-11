@@ -6,7 +6,7 @@
 
 Windows:
 ```
-  docker-compose up --bild -d
+  docker-compose up --build -d
 ```
 
 Linux:
