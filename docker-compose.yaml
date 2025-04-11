@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: testovoe_postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./dump.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - prodaction
+
+  backend:
+    build:
+      context: .
+    container_name: testovoe_backend
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_NAME: testovoe
+    depends_on:
+      - postgres
+    networks:
+      - prodaction
+
+networks:
+    prodaction:
+
+volumes:
+    postgres_data:
