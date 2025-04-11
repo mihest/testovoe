@@ -19,4 +19,4 @@ Linux:
 2. Получение стран - http://localhost:3000/api/countries ( GET )
 3. Получение items - http://localhost:3000/api/items ( GET )
 4. Получение item по Id - http://localhost:3000/api/{id} ( GET )
-5. Создание заказа - http:localhost:3000/api/orders ( POST )
+5. Создание заказа - http://localhost:3000/api/orders ( POST )
